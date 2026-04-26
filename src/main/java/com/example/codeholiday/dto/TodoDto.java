@@ -2,20 +2,19 @@ package com.example.codeholiday.dto;
 
 import com.example.codeholiday.model.Priority;
 import com.example.codeholiday.model.Status;
-import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
 import lombok.*;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
-@Valid
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@Getter
-@Setter
+
 public class TodoDto {
+    private Long id;
+
     @NotBlank(message = "Nội dung không được bỏ trống!")
     private String content;
 

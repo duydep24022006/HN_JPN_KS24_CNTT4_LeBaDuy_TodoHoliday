@@ -14,7 +14,6 @@ public class TodoServiceImpl implements ITodoService {
         this.todoRepository = todoRepository;
     }
 
-
     @Override
     public List<Todo> findAll() {
         return todoRepository.findAll();
@@ -31,7 +30,7 @@ public class TodoServiceImpl implements ITodoService {
     }
 
     @Override
-    public void deleteTodo(long id) {
+    public void deleteById(long id) {
         todoRepository.deleteById(id);
     }
 }

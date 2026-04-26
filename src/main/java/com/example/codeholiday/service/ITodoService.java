@@ -12,5 +12,5 @@ public interface ITodoService {
     List<Todo> findAll();
     Optional<Todo> findById(long id);
     Todo saveTodo(Todo todo);
-    void deleteTodo(long id);
+    void deleteById(long id);
 }

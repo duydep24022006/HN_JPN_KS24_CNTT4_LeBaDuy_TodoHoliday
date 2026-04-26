@@ -13,8 +13,14 @@
 <body>
 
 <div class="container mt-4">
-    <h2 class="mb-3">Thêm mới công việc</h2>
-    <form th:action="@{/todo/add}" th:object="${todoDto}" method="post">
+    <h2 th:text="${id} != null ? 'Cập nhật công việc' : 'Thêm mới công việc'"></h2>
+
+    <form th:action="${id} != null ? @{/todo/update/{id}(id=${id})} : @{/todo/add}"
+          th:object="${todoDto}" method="post">
+
+        <!-- hidden ID chỉ khi update -->
+        <input type="hidden" th:if="${id} != null" th:field="*{id}"/>
+
         <div class="form-group">
             <label for="content">Nội dung</label>
             <input type="text" th:field="*{content}" id="content" class="form-control"/>
@@ -23,7 +29,8 @@
 
         <div class="form-group">
             <label for="dueDate">Ngày hết hạn</label>
-            <input type="date" th:field="*{dueDate}" id="dueDate" class="form-control"/>
+            <input type="date" th:value="${#temporals.format(todoDto.dueDate, 'yyyy-MM-dd')}"
+                   name="dueDate" class="form-control"/>
             <div class="text-danger" th:errors="*{dueDate}"></div>
         </div>
 
@@ -47,9 +54,11 @@
             <div class="text-danger" th:errors="*{priority}"></div>
         </div>
 
-        <button type="submit" class="btn btn-primary">Thêm mới</button>
+        <button type="submit" class="btn btn-primary"
+                th:text="${id} != null ? 'Cập nhật' : 'Thêm mới'"></button>
     </form>
 </div>
+
 
 </form>
 </div>

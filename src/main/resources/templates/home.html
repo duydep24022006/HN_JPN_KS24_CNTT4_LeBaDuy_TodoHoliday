@@ -21,6 +21,7 @@
             <th>Ngày đến hạn</th>
             <th>Trạng thái</th>
             <th>Độ ưu tiên</th>
+            <th>Hành động</th>
         </tr>
         </thead>
         <tbody>
@@ -31,7 +32,12 @@
             <td th:text="${todo.dueDate}"></td>
             <td th:text="${todo.status}"></td>
             <td th:text="${todo.priority}"></td>
-        </tr>
+            <td>
+                <a th:href="@{/todo/edit/{id}(id=${todo.id})}" class="btn btn-sm btn-warning">Sửa</a>
+                <a th:href="@{/todo/delete/{id}(id=${todo.id})}"
+                   class="btn btn-sm btn-danger"
+                   onclick="return confirm('Bạn có chắc muốn xóa?')">Xóa</a>
+            </td>
         </tbody>
     </table>
 </div>
